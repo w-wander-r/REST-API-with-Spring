@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>REST API</title>
+</head>
+<body>
+    
+    <div class=""></div>
+        <h1>List of Clients</h1>
+        <a href="/clients/create">New client</a>
+
+        <table class="">
+            <thead>
+                <tr>ID</tr>
+                <tr>Name</tr>
+                <tr>Email</tr>
+                <tr>Phone</tr>
+                <tr>Address</tr>
+                <tr>Status</tr>
+                <tr>Created At</tr>
+                <tr>Action</tr>
+            </thead>
+            <tbody>
+                <tr th:each="client : ${clients}">
+                    <td th:text="${client.id}"></td>
+                    <td th:text="@{${client.firstName} + ' ' + ${client.lastName}}"></td>
+                    <td th:text="${client.email}"></td>
+                    <td th:text="${client.phone}"></td>
+                    <td th:text="${client.address}"></td>
+                    <td th:text="${client.status}"></td>
+                    <td th:text="${client.createdAt.toString().substring(0, 10)}"></td>
+                    <td>
+                        <a th:href="@{/clients/edit(id=${client.id})}">Edit</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/clients/delete(id=${client.id})}" onclick="return confirm('You want to delete client?')">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
