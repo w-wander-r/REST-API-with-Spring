@@ -38,6 +38,6 @@ public class ClientsController {
 
     @PostMapping("/create")
     public String createClient(@Valid @ModelAttribute ClientDto clientDto, BindingResult result) {
-            return "redirect:/clients";
+        return "redirect:/clients";
     }
 }

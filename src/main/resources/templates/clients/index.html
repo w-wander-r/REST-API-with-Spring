@@ -7,11 +7,11 @@
   <title>REST API</title>
 </head>
 <body class="bg-black text-white">
-  <div class="bg-black text-white">
-    <h1 class="text-2xl font-bold text-center mb-4">List of Clients</h1>
+  <div class="bg-black text-white flex flex-col items-center gap-10">
+    <h1 class="text-2xl font-bold text-center">List of Clients</h1>
     <a href="/clients/create" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400">New client</a>
 
-    <table class="w-full mt-8">
+    <table class="w-full border-collapse border border-green-400">
       <thead>
         <tr>
           <th class="text-white">ID</th>
@@ -25,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="client : ${clients}">
+        <tr th:each="client : ${clients}" class="border border-green-400">
           <td th:text="${client.id}"></td>
           <td th:text="@{${client.firstName} + ' ' + ${client.lastName}}"></td>
           <td th:text="${client.email}"></td>
