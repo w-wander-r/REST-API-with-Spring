@@ -8,23 +8,23 @@
 </head>
 <body class="bg-black text-white">
     
-    <!-- <div class="bg-black text-white">
+    <div class="bg-black text-white">
         <h1>New Client</h1>
 
-        <form method="post" th:object="${clientDto}" th:action="@{/create}">
+        <form method="post" th:object="${clientDto}">
             <div class="">
                 <label>First Name</label>
                 <div class="">
                     <input th:field="${clientDto.firstName}">
                     <p 
-                        th:if="${fields.hasErrors('firstName')}" 
+                        th:if="${#fields.hasErrors('firstName')}" 
                         th:errorclass="text-red-400" 
                         th:errors="${clientDto.firstName}">
                     </p>
                 </div>
             </div>
 
-            <div class="">
+            <!-- <div class="">
                 <label>Last Name</label>
                 <div class="">
                     <input th:field="{clientDto.lastName}">
@@ -97,11 +97,9 @@
                 <div class="">
                     <a href="/clients">Cancel</a>
                 </div>
-            </div>
+            </div> -->
         </form>
-    </div> -->
+    </div>
 
-
-    <h1>hw</h1>
 </body>
 </html>
