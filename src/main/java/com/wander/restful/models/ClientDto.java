@@ -19,7 +19,6 @@ public class ClientDto {
     
     private String address;
 
-    @NotEmpty(message = "Write your status")
     private String status;
 
     public String getFirstName() {
