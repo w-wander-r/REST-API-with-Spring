@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wander.restful.models.Client;
 import com.wander.restful.models.ClientDto;
@@ -63,5 +64,24 @@ public class ClientsController {
         clientRepository.save(client);
 
         return "redirect:/clients";
+    }
+
+    @GetMapping("/edit")
+    public String editClient(Model model, @RequestParam Long id) {
+        Client client = clientRepository.findById(id).orElse(null);
+        if(client == null) return "redirect:/clients";
+
+        ClientDto clientDto = new ClientDto();
+        clientDto.setFirstName(client.getFirstName());
+        clientDto.setLastName(clientDto.getLastName());
+        clientDto.setEmail(clientDto.getEmail());
+        clientDto.setPhone(clientDto.getPhone());
+        clientDto.setAddress(clientDto.getAddress());
+        clientDto.setStatus(clientDto.getStatus());
+
+        model.addAttribute("client", client);
+        model.addAttribute("clientDto", clientDto);
+
+        return "clients/edit";
     }
 }
