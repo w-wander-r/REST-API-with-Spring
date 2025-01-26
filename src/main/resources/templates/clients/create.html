@@ -8,10 +8,10 @@
 </head>
 <body class="bg-black text-white">
     
-    <div class="bg-black text-white">
-        <h1>New Client</h1>
+    <div class="flex flex-col justify-center items-center gap-4 bg-black text-white">
+        <h1 class="flex justify-center">New Client</h1>
 
-        <form method="post" th:object="${clientDto}">
+        <form method="post" th:object="${clientDto}" class="text-center flex flex-col">
             <div class="">
                 <label>First Name</label>
                 <div class="">
@@ -24,12 +24,12 @@
                 </div>
             </div>
 
-            <!-- <div class="">
+            <div class="">
                 <label>Last Name</label>
                 <div class="">
-                    <input th:field="{clientDto.lastName}">
-                    <p
-                        th:if="${#fields.hasErrors('lastName')}"
+                    <input th:field="${clientDto.lastName}">
+                    <p 
+                        th:if="${#fields.hasErrors('lastName')}" 
                         th:errorclass="text-red-400" 
                         th:errors="${clientDto.lastName}">
                     </p>
@@ -39,7 +39,7 @@
             <div class="">
                 <label>Email</label>
                 <div class="">
-                    <input th:field="{clientDto.email}">
+                    <input th:field="${clientDto.email}">
                     <p
                         th:if="${#fields.hasErrors('email')}"
                         th:errorclass="text-red-400" 
@@ -51,7 +51,7 @@
             <div class="">
                 <label>Phone</label>
                 <div class="">
-                    <input th:field="{clientDto.phone}">
+                    <input th:field="${clientDto.phone}">
                     <p
                         th:if="${#fields.hasErrors('phone')}"
                         th:errorclass="text-red-400" 
@@ -63,7 +63,7 @@
             <div class="">
                 <label>Address</label>
                 <div class="">
-                    <input th:field="{clientDto.address}">
+                    <input th:field="${clientDto.address}">
                     <p
                         th:if="${#fields.hasErrors('address')}"
                         th:errorclass="text-red-400" 
@@ -75,7 +75,7 @@
             <div class="">
                 <label>Status</label>
                 <div class="">
-                    <select th:field="{clientDto.address}">
+                    <select th:field="${clientDto.address}">
                         <option value="New">New</option>
                         <option value="Permanent">Permanent</option>
                         <option value="Lead">Lead</option>
@@ -97,7 +97,7 @@
                 <div class="">
                     <a href="/clients">Cancel</a>
                 </div>
-            </div> -->
+            </div>
         </form>
     </div>
 
