@@ -20,6 +20,7 @@ import com.wander.restful.repositories.ClientRepository;
 
 import jakarta.validation.Valid;
 
+
 @Controller
 @RequestMapping("/clients")
 public class ClientsController {
@@ -84,4 +85,31 @@ public class ClientsController {
 
         return "clients/edit";
     }
+
+    @PostMapping("/edit")
+    public String editClient(Model model, @RequestParam Long id, @Valid @ModelAttribute ClientDto clientDto, BindingResult result) {
+        Client client = clientRepository.findById(id).orElse(null);
+        if(client == null) return "redirect:/clients";
+        
+        model.addAttribute("client", client);
+        
+        if(result.hasErrors()) return "clients/edit";
+
+        client.setFirstName(clientDto.getFirstName());
+        client.setLastName(clientDto.getLastName());
+        client.setEmail(clientDto.getEmail());
+        client.setPhone(clientDto.getPhone());
+        client.setAddress(clientDto.getAddress());
+        client.setStatus(clientDto.getStatus());
+
+        try {
+            clientRepository.save(client);
+        } catch (Exception e) {
+            // email already used
+            return "clients/edit";
+        }
+
+        return "redirect:/clients";
+    }
+        
 }
