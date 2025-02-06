@@ -37,7 +37,10 @@
             <a th:href="@{/clients/edit(id=${client.id})}" class="text-blue-500 hover:text-blue-700">Edit</a>
           </td>
           <td>
-            <a th:href="@{/clients/delete(id=${client.id})}" onclick="return confirm('You want to delete client?')" class="text-red-500 hover:text-red-700">Delete</a>
+            <form th:action="@{/clients/delete}" method="post" onsubmit="return confirm('You want to delete client?')">
+              <input type="hidden" name="id" th:value="${client.id}" />
+              <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
+            </form>
           </td>
         </tr>
       </tbody>
